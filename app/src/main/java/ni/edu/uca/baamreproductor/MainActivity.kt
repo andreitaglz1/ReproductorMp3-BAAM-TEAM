@@ -8,8 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import ni.edu.uca.baamreproductor.databinding.RowSongBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var rowSongBinding: RowSongBinding
+    
     val fd by lazy {
         assets.openFd(songAct)
     }
@@ -63,6 +66,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        rowSongBinding = RowSongBinding.inflate(layoutInflater)
+        
         setContentView(R.layout.activity_main)
         controllers[ci.btnPlay].setOnClickListener(this::playClicked)
         controllers[ci.btnStop].setOnClickListener(this::stopClicked)

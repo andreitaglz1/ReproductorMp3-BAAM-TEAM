@@ -10,12 +10,13 @@ class AdapterSongs (val elementos: List<String>, val con:MainActivity):
     RecyclerView.Adapter<AdapterSongs.ViewHolder>(){
 
     var selected = -1
+    lateinit var v: RowSongBinding
 
         class ViewHolder(val bind: RowSongBinding)
             :RecyclerView.ViewHolder(bind.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = RowSongBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        v = RowSongBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(v)
     }
 
@@ -36,6 +37,7 @@ class AdapterSongs (val elementos: List<String>, val con:MainActivity):
                 notifyDataSetChanged()
             }
         }
+
     }
 
     override fun getItemCount(): Int {
